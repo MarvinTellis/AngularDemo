@@ -1,0 +1,16 @@
+<p>deletehero works!</p>
+
+<form (ngSubmit)="onSubmit(heroForm)" #heroForm="ngForm">
+    
+    <div [hidden] = "submitted">
+
+        <div class="form-group">
+            <label for="id">ID : </label>
+            <input type="text" class="form-control" id="id" [(ngModel)]="model.id" name="id">
+        </div>
+
+        <!-- <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button> -->
+
+        <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+    </div>
+</form>

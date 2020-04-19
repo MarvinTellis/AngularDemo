@@ -1,0 +1,30 @@
+<p>addhero works!</p>
+
+<form (ngSubmit)="onSubmit(heroForm)" #heroForm="ngForm">
+    
+    <div [hidden] = "submitted">
+
+        <div class="form-group">
+            <label for="name">Name : </label>
+            <input type="text" class="form-control"  id="name" [(ngModel)]="model.name" name="name" #name="ngModel" required minlength="4">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+                <div *ngIf="name.errors.required">
+                    Name is required.
+                </div>
+                <div *ngIf="name.errors.minlength">
+                    Name must be at least 4 characters long.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="id">ID : </label>
+            <input type="text" class="form-control" id="id" [(ngModel)]="model.id" name="id">
+        </div>
+
+        <!-- <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button> -->
+
+        <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+    </div>
+</form>
